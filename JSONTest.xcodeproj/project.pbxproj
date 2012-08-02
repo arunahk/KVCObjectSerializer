@@ -356,6 +356,7 @@
 		6021C00B1457CAC10046B54B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "JSONTest/JSONTest-Prefix.pch";
 				INFOPLIST_FILE = "JSONTest/JSONTest-Info.plist";
@@ -367,6 +368,7 @@
 		6021C00C1457CAC10046B54B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "JSONTest/JSONTest-Prefix.pch";
 				INFOPLIST_FILE = "JSONTest/JSONTest-Info.plist";

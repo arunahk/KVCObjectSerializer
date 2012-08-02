@@ -42,7 +42,6 @@ const char * property_getTypeString( objc_property_t property );
 + (id)objectForJSON:(NSString *) inputJSON {
     SBJSON *parser = [[SBJSON alloc] init];
 	NSDictionary *jDict = [parser objectWithString:inputJSON error:nil];
-    [parser autorelease];
     return [self objectForDictionary:jDict];
 }
 
@@ -125,8 +124,7 @@ const char * property_getTypeString( objc_property_t property )
     NSMutableDictionary * dict = [[NSMutableDictionary alloc] init];
     id class = objc_getClass(className);
     if ([class superclass] != [NSObject class]) {
-        [dict release];
-        dict = [[KVCBaseObject getPropertiesAndTypesForClassName:class_getName([class superclass])] retain];
+        dict = [KVCBaseObject getPropertiesAndTypesForClassName:class_getName([class superclass])];
     }
     unsigned int outCount, i; objc_property_t *properties = class_copyPropertyList(class, &outCount); 
     for (i = 0; i < outCount; i++) {
@@ -147,7 +145,7 @@ const char * property_getTypeString( objc_property_t property )
         
     }
     free(properties);
-    return [dict autorelease];
+    return dict;
 }
 
 +(BOOL) isPropertyTypeArray:(NSString *)propertyType {
@@ -175,7 +173,7 @@ const char * property_getTypeString( objc_property_t property )
 
 +(id) objectForPropertyKey:(NSString *)propertyType {
     id kvcObject = [[NSClassFromString(propertyType) alloc] init];
-    return [kvcObject autorelease];
+    return kvcObject;
 }
 
 + (NSArray *)arrayForType:(NSString *)componentType withJSONArray:(NSArray *)jArray {
@@ -197,7 +195,7 @@ const char * property_getTypeString( objc_property_t property )
         [resultArray addObject:kvcChild];
     }
     
-    return [resultArray autorelease];
+    return resultArray;
 }
 
 + (id)objectForDictionary:(NSDictionary *) inputDict {
@@ -212,7 +210,7 @@ const char * property_getTypeString( objc_property_t property )
     //Create our object
     id kvcObject = [[NSClassFromString([NSString stringWithCString:className encoding:NSUTF8StringEncoding]) alloc] init];
     
-    for (NSString * key in [inputDict allKeys]) {
+    for (__strong NSString * key in [inputDict allKeys]) {
         id propertyValue = [inputDict objectForKey:key];
         
         
@@ -262,7 +260,7 @@ const char * property_getTypeString( objc_property_t property )
         }
         
     }
-    return [kvcObject autorelease];
+    return kvcObject;
 }
 
 - (NSString *)customKeyForPropertyName:(NSString *)propertyName {
@@ -311,13 +309,11 @@ const char * property_getTypeString( objc_property_t property )
                         }
                     }
                     [resultDict setValue:customObjArray forKey:[self customKeyForPropertyName:currentProperty]];
-                    [customObjArray release];
                     
                 }
             } else {
                 NSArray * emptyArray = [[NSArray alloc] init];
                 [resultDict setValue:emptyArray forKey:[self customKeyForPropertyName:currentProperty]];
-                [emptyArray release];
             }
             
             
@@ -333,7 +329,7 @@ const char * property_getTypeString( objc_property_t property )
             
             id kvcChild = [self valueForKey:currentProperty];
             if (kvcChild == nil) {
-                kvcChild = [[[KVCBaseObject alloc] init] autorelease];
+                kvcChild = [[KVCBaseObject alloc] init];
             }
             if ([kvcChild isKindOfClass:[KVCBaseObject class]]) {
                 NSDictionary * childDict = [kvcChild objectToDictionary];
@@ -343,7 +339,7 @@ const char * property_getTypeString( objc_property_t property )
         }
         
     }
-    return [resultDict autorelease];
+    return resultDict;
 }
 
 - (NSString *)objectToJson {
@@ -351,7 +347,4 @@ const char * property_getTypeString( objc_property_t property )
 }
 
 
-- (void)dealloc {
-    [super dealloc];
-}
 @end

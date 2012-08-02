@@ -22,9 +22,9 @@
 }
 @property BOOL isAvailable;
 @property double doubleValue;
-@property (nonatomic, retain) NSString  * kName;
-@property (nonatomic, retain) NSString * addressField;
+@property (nonatomic) NSString  * kName;
+@property (nonatomic) NSString * addressField;
 @property NSInteger kAge;
-@property (nonatomic, retain) NSMutableArray * kChildrenArray;
-@property (nonatomic, retain) NSDictionary * kChildObject;
+@property (nonatomic) NSMutableArray * kChildrenArray;
+@property (nonatomic) NSDictionary * kChildObject;
 @end

@@ -14,6 +14,6 @@
     NSArray * GlossSeeAlso;
 }
 
-@property (nonatomic, retain) NSArray * GlossSeeAlso;
+@property (nonatomic) NSArray * GlossSeeAlso;
 
 @end

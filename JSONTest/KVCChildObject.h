@@ -13,7 +13,7 @@
     NSString * kChildName;
     NSInteger kNumValues;
 }
-@property (nonatomic, retain) NSString * kChildName;
+@property (nonatomic) NSString * kChildName;
 @property NSInteger kNumValues;
 
 @end

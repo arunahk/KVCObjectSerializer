@@ -14,7 +14,7 @@
     GlossList * GlossList;
     NSString * title;
 }
-@property (nonatomic, retain) GlossList * GlossList;
-@property (nonatomic, retain) NSString * title;
+@property (nonatomic) GlossList * GlossList;
+@property (nonatomic) NSString * title;
 
 @end

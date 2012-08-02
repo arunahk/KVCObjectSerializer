@@ -14,7 +14,7 @@
     GlossDiv * GlossDiv;
     NSString * title;
 }
-@property(nonatomic, retain) GlossDiv * GlossDiv;
-@property(nonatomic, retain) NSString * title;
+@property(nonatomic) GlossDiv * GlossDiv;
+@property(nonatomic) NSString * title;
 
 @end

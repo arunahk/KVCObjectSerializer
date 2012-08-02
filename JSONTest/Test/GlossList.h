@@ -16,7 +16,7 @@
     
 }
 
-@property(nonatomic, retain) GlossEntry * GlossEntry;
-@property(nonatomic, retain) NSString * title;
+@property(nonatomic) GlossEntry * GlossEntry;
+@property(nonatomic) NSString * title;
 
 @end

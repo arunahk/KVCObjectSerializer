@@ -20,12 +20,12 @@
     NSString * SortAs;
     
 }
-@property(nonatomic, retain) NSString * Abbrev;
-@property(nonatomic, retain) NSString * Acronym;
-@property(nonatomic, retain) GlossDef * GlossDef;
-@property(nonatomic, retain) NSString * GlossSee;
-@property(nonatomic, retain) NSString * GlossTerm;
-@property(nonatomic, retain) NSString * ID;
-@property(nonatomic, retain) NSString * SortAs;
+@property(nonatomic) NSString * Abbrev;
+@property(nonatomic) NSString * Acronym;
+@property(nonatomic) GlossDef * GlossDef;
+@property(nonatomic) NSString * GlossSee;
+@property(nonatomic) NSString * GlossTerm;
+@property(nonatomic) NSString * ID;
+@property(nonatomic) NSString * SortAs;
 
 @end

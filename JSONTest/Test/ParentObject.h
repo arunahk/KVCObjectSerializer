@@ -15,5 +15,5 @@
     Glossary * glossary;
 }
 
-@property (nonatomic, retain) Glossary * glossary;
+@property (nonatomic) Glossary * glossary;
 @end
